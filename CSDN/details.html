@@ -1,0 +1,307 @@
+<!DOCTYPE htlm>
+<html>
+<head>
+	<meta charset="ut-8">
+	<meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/details.css">
+    <script type="text/javascript" src="js/jquery-3.2.0.min.js"></script>
+ 	<script type="text/javascript" src="js/vue.js"></script>
+ 	<style type="text/css">
+ 		.show {
+ 			display: block;
+ 		}
+ 		.hide {
+ 			display: none;
+ 		}
+ 	</style>
+	<title>博客详情</title>
+</head>
+<body>
+	<div id="content">
+		<div class="header clearfix">
+			<div class="headL clearfix">
+				<div class="toolbarBack"></div>
+				<div class="logo">CSDN</div>
+			</div>
+			<div class="headR">
+				<div class="login">
+					<a href="login.html">登录</a>
+				</div>
+			</div>
+		</div>
+		<div id="main">
+			<div class="top-user clearfix">
+				<div class="top-user-info">
+					<a href="###" class="clearfix">
+						<!-- <img :src="resData.data.info.userimg"> -->
+						<span class="nick-name">
+							{{ resData.data.blog_info.author_name }}
+						</span>
+					</a>
+				</div>
+				<div class="follow">
+					<a href="###" class="follow-btn">关注</a>
+				</div>
+			</div>
+			<div class="article">
+				<h1 class="article-title">				{{ resData.data.blog_info.title }}
+				</h1>
+				<div class="article-info">
+					<span class="type">转载</span>
+					<span class="creat-time">
+						{{ resData.data.blog_info.date }}
+					</span>
+					<span class="read-num">阅读 {{ resData.data.blog_info.read_num }}</span>
+				</div>
+				<div class="article-content">
+					<p class="media-content">
+						今天是女神节，祝各位 MM 节日快乐哈！话说曾经某校的 14 级软四的男生，给同校妹子做了一个条幅，内容是：
+					</p>
+					<p class="media-content"></p>
+					<blockquote>
+						<p>
+							<strong>
+								for ( int i=0; i<e; i++ )
+								 printf ( "I Love My Girl" );
+							</strong>
+						</p>
+					</blockquote>
+					<p class="media-content center">
+						<span>
+							主页君在微博中扩散了这张图：
+						</span>
+					</p>
+					<p class="media-content center">
+						<span>
+							<strong>
+								「14 级软四的男生们，你们粗来…… 」
+							</strong>
+						</span>
+					</p>
+					<p class="media-content center">
+						<img src="images/p.jpeg">
+					</p>
+					<p class="media-content">
+					</p>
+					<p class="media-content">
+						结果引发程序员的一片热议呀。主页君（微信号：iProgrammer）摘选部分评论：
+					</p>
+					<p class="media-content">
+					</p>
+					<blockquote>
+						<p class="lineHeight">
+							<span>
+								@在寧小王爷：实力分号，活该单身
+							</span>
+						</p>
+						<p class="lineHeight">
+							<br/>
+						</p>
+						<p class="lineHeight">
+							<span>
+								@大唐UV：1.多了分号；2.用while(true)  更简洁
+							</span>
+						</p>
+						<p class="lineHeight">
+							<br/>
+						</p>
+						<p class="lineHeight">
+							<span>
+								@于茜Cynthiaaaaa：回复@-_-玖-_-:首先forever没有定义 编译错误 其次for循环之后的分号 导致了for那一句一直死循环 光占cycle不干事 所以根本print不出来 哈哈哈哈哈哈 想骗我们cs的女汉子 不可能～
+							</span>
+						</p>
+						<p class="lineHeight">
+							<br/>
+						</p>
+						<p class="lineHeight">
+							<span>
+								@朱漾：装逼失败！！！ 手残多打个分号，还可能编译错误
+							</span>
+						</p>
+						<p class="lineHeight">
+							<br/>
+						</p>
+						<p class="lineHeight">
+							<span>
+								@12162E495C1ACF37: 简直不知道是真自黑还是在声明我们就要注孤生，讲真这种弱智水平的代码写标语太low了看着real尴尬……不如说标语我就觉得很尴尬
+							</span>
+						</p>
+						<p class="lineHeight">
+							<br/>
+						</p>
+						<p class="lineHeight">
+							<span>
+								@12162E495C1ACF37: 简直不知道是真自黑还是在声明我们就要注孤生，讲真这种弱智水平的代码写标语太low了看着real尴尬……不如说标语我就觉得很尴尬
+							</span>
+						</p>
+						<p class="lineHeight">
+							<br/>
+						</p>
+						<p class="lineHeight">
+							<span>
+								@朱漾：装逼失败！！！ 手残多打个分号，还可能编译错误
+							</span>
+						</p>
+					</blockquote>
+					<p class="media-content">
+						<br/>
+					</p>
+					<p class="media-content">
+						<span>
+							大家觉得那个分号，是故意加的，表达「爱在心中口难开」呢？还是表白时手抖多加的？
+						</span>
+					</p>
+					<p class="media-content">
+						<br/>
+					</p>
+					<p class="media-content">
+						<br/>
+					</p>
+					<p class="media-content">
+						<span style="color:rgb(122,68,66);">
+							<strong>
+								<span style="font-size:16px;">
+									精彩回顾
+								</span>
+							</strong>
+						</span>
+						<span style="color:rgb(136,136,136);font-size:12px;">
+							点蓝字即可
+						</span>
+					</p>
+					<p class="media-content">
+						<br/>
+					</p>
+					<p class="media-content">
+						<br/>
+					</p>
+					<p class="special">
+						<span>♡</span>
+						<a href="">程序员听到bug后的N种反应…
+						</a>
+					</p>
+					<p class="special">
+						<span>♡</span>
+						<a href="">程序员听到bug后的N种反应…
+						</a>
+					</p>
+					<p class="special">
+						<span>♡</span>
+						<a href="">程序员听到bug后的N种反应…
+						</a>
+					</p>
+					<p class="special">
+						<span>♡</span>
+						<a href="">程序员听到bug后的N种反应…
+						</a>
+					</p>
+					<p class="special">
+						<br/>
+					</p>
+					<p class="special">
+						<img src="images/q.jpeg">
+					</p>
+				</div>
+			</div>
+		</div>
+		<a v-if="isCollect" href="###" class="follow-btn" @click="clickCollect()">
+			收藏
+		</a>
+		<a v-else href="###" class="follow-btn" @click="clickCollect()">
+			已收藏
+		</a>
+	</div>
+	<script type="text/javascript">
+		var vm = new Vue({
+			el:"#content",
+			data:{
+				isCollect: false,
+				resData: {
+					data: {
+						blog_info: {
+
+						}
+					}
+				},
+			},
+			mounted: function(){
+				this.getData();
+			},
+			methods: {
+				getData: function(){
+					var args= this.getQueryStringArge();
+					var id = args["id"];
+					var that = this;
+					$.ajax({
+						url:'http://blog.com/api/blog/info?id=id',
+						type:'get',
+						data:{
+							id: id,
+							user_id: window.localStorage.user_id,
+						},
+						dataType:'json',
+						success: function(res){
+							that.resData = res;
+							console.log(res);
+							localStorage.setItem('blog_id',res.data.blog_info.id);
+						},
+						error: function(res){
+
+						}
+					})
+				},
+				clickCollect: function(){
+					var that = this;
+					var args= this.getQueryStringArge();
+					var id = args["id"];
+					$.ajax({
+						url:'http://blog.com/api/collect/add',
+						type:'post',
+						data:{
+							user_id: window.localStorage.user_id,
+							blog_id: id,
+						},
+						dataType:'json',
+						success: function(res){
+							if(res.error_code == 0){
+								that.isCollect = true;
+							}
+							// if(res.error_code == 1){
+							// 	that.list[0].collected = false;
+							// 	that.list[1].collected = true;
+							// }else {
+							// 	that.list[0].collected = true;
+							// 	that.list[1].collected = false;
+							// }
+						},
+						error: function(res){
+
+						}
+					})
+				},
+				getQueryStringArge: function(){
+					var qs = (location.search.length > 0 ? location.search.substring(1) : ""),
+						args = {},
+						items = qs.length ? qs.split("&") : [],
+						item = null,
+						name = null,
+						value = null,
+						i = 0,
+						len = items.length;
+						for(i=0;i < len;i++){
+							item = items[i].split("=");
+							name = decodeURIComponent(item[0]);
+							value = decodeURIComponent(item[1]);
+							if(name.length){
+								args[name] = value;
+							}
+						}
+					return args;
+				}
+			}
+		})
+	</script>
+</body>
+</html>

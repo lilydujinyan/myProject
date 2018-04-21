@@ -1,0 +1,85 @@
+<!Doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="login.css">
+    <script type="text/javascript" src="js/jquery-3.2.0.min.js"></script>
+ 	<script type="text/javascript" src="js/vue.js"></script>
+	<title></title>
+</head>
+<body>
+	<div class="container" id="content">
+		<div class="login-user">
+			<h3>账号登录</h3>
+			<div class="user-info">
+				<input type="text" class="user-name" placeholder="输入用户名" v-model="username"/>
+				<input type="text" class="user-name" placeholder="输入手机号" v-model="phone"/>
+				<input type="password" class="pass-word" placeholder="输入密码" v-model="password">
+				<div class="forget-password clearfix">
+					<span>
+						<input type="checkbox">
+						<label for="rememberMe">下次自动登录</label>
+					</span>
+					<span>
+						<a href="###">忘记密码</a>
+					</span>
+				</div>
+				<input type="button" value="注册" class="logging" @click="click()">
+			</div>
+			<div class="line"></div>
+			<div class="third-part">
+				<span>第三方账号登录</span>
+				<span>
+					<a href="###" class="qq"></a>
+					<a href="###" class="sina"></a>
+					<a href="###" class="baidu"></a>
+					<a href="###" class="cc"></a>
+					<a href="###" class="github"></a>
+				</span>
+				<div class="register-now">
+					<span>还没有CSDN账号？</span>
+					<span class="register">
+						<a href="###">立即注册</a>
+					</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		var vm = new Vue({
+			el:'#content',
+			data:{
+				phone:'',
+				password:'',
+				username:''
+			},
+			mounted: function(){
+
+			},
+			methods: {
+				click: function(){
+					$.ajax({
+						url:'http://blog.com/api/user/doReg',
+						type:'post',
+						data:{
+							uname: this.username,
+							phone: this.phone,
+							password: this.password,
+							format:'json'
+						},
+						dataType:'json',
+						success: function(res){
+							alert("chenggong");
+						},
+						error: function(res){
+
+						}
+					})
+				}
+			}
+		})
+	</script>
+</body>
+</html>

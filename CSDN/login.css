@@ -1,0 +1,144 @@
+html,body,h3 {
+	margin: 0;
+	padding: 0;
+}
+a {
+    color: #428bca;
+    text-decoration: none;
+}
+.clearfix::after {
+	display: block;
+	content: "";
+	height: 0;
+	clear: both;
+}
+.container {
+	padding: 48px 15px;
+	margin-left: auto;
+	margin-right: auto;
+	font-size: 12px;
+}
+.login-user {
+	/*position: relative;*/
+	width: 100%;
+	/*height: 50px;*/
+	background: #fefefe;
+    border: 1px solid #d5dce5;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+.login-user h3 {
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: 500;
+    line-height: 2;
+	font-size: 1.5em;
+    color: #4d5e73;
+    padding: 25px 30px 15px 30px;
+}
+.user-info {
+	padding: 0 30px;
+}
+.pass-word {
+	margin-bottom: 0;
+}
+.user-name, .pass-word {
+	background: #fff;
+    display: block;
+    width: 100%;
+    padding: 12px 0;
+    border: 1px solid #d5dce5;
+    margin-bottom: 20px;
+    font-weight: normal;
+    text-indent: 23px;
+    outline: 0;
+    font-size: 1.25em;
+    border-radius: 3px
+}
+.forget-password {
+	margin-top: 10px;
+    color: #4d5e73;
+    font-size: 1em;
+}
+.forget-password input {
+	margin-right: 10px;
+    border: 1px solid #ccc;
+}
+label {
+    display: inline-block;
+    margin-bottom: 5px;
+    font-weight: 700;
+}
+.forget-password span {
+	float: left;
+	display: inline-block;
+	width: 50%;
+}
+.forget-password span:nth-of-type(2){
+	text-align: right;
+}
+.forget-password span a {
+	color: #4d5e73;
+    text-decoration: none;
+}
+.logging {
+	background: #c90a16;
+    display: block;
+    height: 44px;
+    line-height: 44px;
+    color: #fff;
+    text-align: center;
+    margin-top: 20px;
+    font-size: 1.5em;
+    text-decoration: none;
+    clear: both;
+    width: 100%;
+    border: solid 1px #c90000;
+    border-radius: 3px;
+    box-shadow: 0 0 3px #fff inset;
+}
+.line {
+	background: #eee;
+    height: 1px;
+    margin-top: 40px;
+}
+.third-part {
+    padding: 20px 52px 35px 30px;
+}
+.third-part span {
+	display: block;
+    font-size: 1.083em;
+    color: #666;
+    margin-bottom: 11px;
+}
+.qq {
+	background-position: 0 0;
+}
+.sina {
+	background-position: -74px 0;
+}
+.baidu {
+	background-position: -112px 0;
+}
+.cc {
+	background-position: -150px 0;
+}
+.github {
+	background-position: -187px 0;
+}
+.qq, .sina, .baidu, .cc, .github {
+	display: inline-block;
+    background-image: url(images/login-third-party-new.png);
+    background-repeat: no-repeat;
+    margin-right: 5px;
+    width: 32px;
+    height: 32px;
+}
+.register-now {
+    margin-top: 20px;
+}
+.register-now span {
+	display: inline-block;
+}
+.register {
+	text-align: right;
+}

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<script type="text/javascript" src="js/jquery-3.2.0.min.js"></script>
+ 	<script type="text/javascript" src="js/vue.js"></script>
+	<title>个人博客列表</title>
+	<title></title>
+</head>
+<body>
+	<div id="myBlog">
+		<ul>
+			<li v-for="item in list">
+				<span>{{ item.title }}</span>
+				<span>{{ item.date }}</span>
+				<span>{{ item.read_num }}</span>
+				<span>{{ item.classify_name }}</span>
+				<button @click="delBlog(item)">删除</button>
+				<a v-bind:href="'addBlog.html?id='+item.id"><button @click="editBlog(item)">编辑</button></a>
+			</li>
+		</ul>
+	</div>
+	<script type="text/javascript">
+		var myBlog = new Vue ({
+			el: '#myBlog',
+			data: {
+				list:[]
+			},
+			mounted: function(){
+				this.myBlog();
+			},
+			methods: {
+				myBlog: function(){
+					var that = this;
+					$.ajax({
+						url: 'http://blog.com/api/blog/myBlog',
+						type: 'post',
+						data: {
+							user_id: localStorage.getItem("user_id"),
+						},
+						dataType: 'json',
+						success: function(res){
+							if(res.error_code == 0){
+								// alert("发布成功，即将展示页面内容");
+								that.list = res.data.my_blog_lists;
+							}
+						},
+						error: function(res){
+							alert(res.message);
+						}
+					})
+				},
+				delBlog: function(item) {
+					var that = this;
+					$.ajax({
+						url: 'http://blog.com/api/blog/del',
+						type: 'post',
+						data: {
+							user_id: localStorage.getItem("user_id"),
+							blog_id: item.id,
+						},
+						dataType: 'json',
+						success: function(res){
+							if(res.error_code == 0){
+								alert("删除成功");
+								that.list.forEach(function(i,index){
+									if(i.user_id == item.id){
+										that.list.splice(index,1)
+									}
+								})
+							}
+						},
+						error: function(res){
+							alert("删除成功");
+						}
+					})
+				},
+				editBlog: function(item){
+					var that = this;
+					$.ajax({
+						url: 'http://blog.com/api/blog/add',
+						type: 'get',
+						data: {
+							user_id: localStorage.getItem("user_id"),
+							blog_id: item.id,
+						},
+						dataType: 'json',
+						success: function(res){
+							if(res.error_code == 0){
+								alert("编辑成功，即将跳到发布博客页面");
+								window.location.href = 'editBlog.html';
+							}
+						},
+						error: function(res){
+							alert(123);
+						}
+					})
+				}
+			}
+		})
+	</script>
+</body>
+</html>

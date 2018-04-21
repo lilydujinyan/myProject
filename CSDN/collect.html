@@ -1,0 +1,68 @@
+<!Doctype html>
+<html>
+<head>
+	<meta charset="ut-8">
+	<meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script type="text/javascript" src="js/jquery-3.2.0.min.js"></script>
+ 	<script type="text/javascript" src="js/vue.js"></script>
+	<title>我的收藏</title>
+</head>
+<body>
+	<div id="content">
+		<div class="header clearfix">
+			<div class="headL clearfix">
+				<div class="toolbarBack"></div>
+				<div class="logo">CSDN</div>
+			</div>
+			<div class="headR">
+				<div class="login">
+					<a href="login.html">已登录</a>
+				</div>
+			</div>
+		</div>
+		<div class="collect-list" v-for="item in resData.data.blog_lists">
+			<span>{{ item.title }}</span>
+			<span>{{ item.date }}</span>
+			<span>{{ item.read_num }}</span>
+			<span>{{ item.author_name }}</span>
+			<span>{{ item.classify_name }}</span>
+		</div>
+	</div>
+	<script type="text/javascript">
+		var myCollect = new Vue({
+			el: '#content',
+			data: {
+				resData: {
+					data: {
+						blog_lists:[],
+					}
+				}
+			},
+			mounted: function(){
+				this.getList();
+			},
+			methods: {
+				getList: function(){
+					var that = this;
+					$.ajax({
+						url: 'http://blog.com/api/collect/lists',
+						type: 'post',
+						data: {
+							user_id: window.localStorage.user_id,
+						},
+						dataType: 'json',
+						success: function(res){
+							that.resData = res;
+						},
+						error: function(res){
+							alert("shibai");
+						}
+					})
+				}
+			}
+		})
+	</script>
+</body>
+</html>

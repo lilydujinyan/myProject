@@ -1,0 +1,148 @@
+
+body {
+	font-size: 16px;
+	line-height: 150%;
+}
+#main {
+	/*margin-top: 52px;*/
+}
+.top-user {
+	padding: .32rem 0;
+    margin: 0 .32rem;
+    border-bottom: 1px solid #ddd;
+}
+.top-user-info {
+	float: left;
+}
+.avatar {
+	float: left;
+	display: inline-block;
+    width: .64rem;
+    height: .64rem;
+    background-color: #abafab;
+    border-radius: 50%;
+}
+.nick-name {
+	float: left;
+	margin-left: .16rem;
+    line-height: .64rem;
+    width: 2.78rem;
+    font-weight: 700;
+    color: #4f4f4f;
+}
+.follow {
+	float: right;
+}
+.follow-btn {
+	display: block;
+    background: #c92027;
+	width: 1.2rem;
+    height: .64rem;
+    color: #fff;
+    border-radius: 4px;
+    line-height: .64rem;
+    text-align: center;
+}
+.article {
+	margin: 0 0.32rem;
+}
+.article-title {
+	font-size: .4rem;
+    color: #333;
+    letter-spacing: 0;
+    line-height: .6rem;
+    padding-top: .32rem;
+    word-wrap: break-word;
+    word-break: break-all;
+    font-weight: 700;
+}
+.article-info {
+	font-size: .24rem;
+    color: #999;
+    letter-spacing: 0;
+    line-height: .64rem;
+    margin-top: .08rem;
+    padding-bottom: .16rem;
+    margin-bottom: .32rem;
+    border-bottom: 1px solid #ddd;
+}
+.article-info span {
+	margin-right: .24rem;
+}
+.media-content {
+	min-height: 1em;
+    color: rgb(62,62,62);
+    font-size: 16px;
+    line-height: 25.6px;
+    white-space: normal;
+    background-color: rgb(255,255,255);
+}
+.media-content span {
+	font-size: 15px;
+}
+blockquote {
+	display: block;
+    padding: .32rem;
+    margin: 0 0 .48rem;
+    border-left: .16rem solid #DDDFE4;
+    background: #EEF0F4;
+    overflow: auto;
+    word-wrap: normal;
+    word-break: normal;
+    background-color: #fff;
+}
+blockquote p {
+	min-height: 1em;
+    line-height: 25.6px;
+	font-size: .28rem;
+    color: #999;
+    font-weight: 400;
+    margin-bottom: 0;
+}
+strong {
+	font-weight: 700;
+}
+.center {
+	text-align: center;
+}
+.center img {
+	margin: .48rem 0;
+	visibility: visible !important;
+	width: 100%;
+	/*height: 100%;*/
+}
+.article-content blockquote p {
+	margin: 0 0.32rem;
+}
+.lineHeight {
+	font-size: .28rem;
+    line-height: .44rem;
+    color: #999;
+    font-weight: 400;
+    margin-bottom: 0;
+    margin: 0 0 .32rem;
+    text-align: justify;
+}
+.lineHeight span {
+	color: rgb(61,167,66);
+    font-size: 15px;
+}
+.special {
+	min-height: 1rem;
+	line-height: 25.6px;
+    text-decoration: underline;
+    font-size: 14px;
+    color: rgb(0,128,255);
+}
+.special img {
+	width: 100%;
+	/*height: 100%;*/
+	color: rgb(62,62,62);
+    font-size: 16px;
+    line-height: 28.4444px;
+    visibility: visible !important;
+	margin: .48rem 0;
+}
+.special a {
+	color: rgb(0,128,255);
+}

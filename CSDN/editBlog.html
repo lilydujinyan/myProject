@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="css/iconfont.css">
+	<link rel="stylesheet" type="text/css" href="css/ueditor.css">
+	<script type="text/javascript" src="js/jquery-3.2.0.min.js"></script>
+ 	<script type="text/javascript" src="js/vue.js"></script>
+	<script type="text/javascript" src="./ueditor/ueditor.config.js"></script>
+	<script type="text/javascript" src="./ueditor/ueditor.all.min.js"></script>
+	<script type="text/javascript" src="./ueditor/lang/zh-cn/zh-cn.js"></script>
+	<title>编辑博客</title>
+</head>
+<body>
+	<div id="main">
+		<header id="header">
+			<nav id="nav" class="clearfix">
+				<a href="" class="header-logo">
+					<span class="icon-logo">CSDN</span>
+					<span class="nav-bar">
+						<a href="">创作中心</a>
+					</span>
+				</a>
+				<div class="collapse clearfix">
+					<a href="" class="btn btn-red">
+						<i class="iconfont">&#xe608;</i>
+						写博客
+					</a>
+					<ul class="clearfix nav-list">
+						<li class="nav-avatar">
+							<a href="">
+								<img src="images/user.jpg">
+							</a>
+						</li>
+						<li class="nav-info">
+							<a href="" class="header-username">
+								qq_41175896
+							</a>
+							<a href="" class="header-logout">退出</a>
+						</li>
+					</ul>
+				</div>
+			</nav>
+		</header>
+		<div class="container clearfix">
+			<div class="sidebar fl">
+				<div class="list-title">内容</div>
+				<div class="list-group">
+					<a href="#" class="list-group-item active" @click="personlBlog()" :class="isShow ? 'special' : ''">个人博客</a>
+					<a href="#" class="list-group-item" @click="manageBlog()" :class="isShow ? '' : 'special'">博客管理</a>
+				</div>
+			</div>
+			<div class="content-body fr">
+				<div :class="isShow ? 'show' : 'hide'">
+					<div class="title-box">
+						<input type="text" id="txtTile" placeholder="输入文章标题" v-model="blog_title">
+					</div>
+					<div class="section">
+						<script id="container" name="content" type="text/plain"></script>
+						<div class="more">
+							<div cladd="form-group">
+								<label class="labTitle col-form-label">博客分类：</label>
+								<div class="txt-box">
+									<select class="droBlogType" v-model="class_id"> 
+										<option :value="item.classify_id" v-for="item in list" selected="selected">
+											{{ item.classify_name }}
+										</option>
+										<!-- <option value="5" selected="selected">日记</option>
+										<option value="4">it</option> -->
+									</select>
+								</div>
+								<p>
+									<input class="btn btn-red" type="button" value="再次发布" title="再次发布" @click="doAdd()">
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div :class="isShow ? 'hide' : 'show'">
+					<div id="blog_list">
+						<ul>
+							<li v-for="item in blog_list">
+								<span>{{ item.title }}</span>
+								<span>{{ item.date }}</span>
+								<span>{{ item.read_num }}</span>
+								<span>{{ item.classify_name }}</span>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		var addBlog = new Vue({
+			el: '#main',
+			data: {
+				blogList:[],
+				list: [],
+				blog_title: '',
+				class_id: '',
+				isShow: true,
+				blog_list:[],
+			},
+			mounted: function(){
+				this.add();
+				var ue = UE.getEditor('container');
+			},
+			methods: {
+				getQueryStringArge: function(){
+					var qs = (location.search.length > 0 ? location.search.substring(1) : ""),
+						args = {},
+						items = qs.length ? qs.split("&") : [],
+						item = null,
+						name = null,
+						value = null,
+						i = 0,
+						len = items.length;
+						for(i=0;i < len;i++){
+							item = items[i].split("=");
+							name = decodeURIComponent(item[0]);
+							value = decodeURIComponent(item[1]);
+							if(name.length){
+								args[name] = value;
+							}
+						}
+					return args;
+				},
+				getEditorContent: function(){
+					return UE.getEditor('container').getContent()
+				},
+				personlBlog: function(){
+					this.isShow = true;
+				},
+				doAdd: function(){
+					var args= this.getQueryStringArge();
+					var id = args["id"];
+					var that = this;
+					console.log(that.class_id);
+					$.ajax({
+						url: 'http://blog.com/api/blog/doEdit',
+						type: 'post',
+						data: {
+							user_id: localStorage.getItem("user_id"),
+							blog_list: id,
+							title: that.blog_title,
+							content: that.getEditorContent(),
+							classify_id: that.class_id,
+						},
+						dataType: 'json',
+						success: function(res){
+							if(res.error_code == 0){
+								alert("发布成功！");
+								window.location.href= 'addBlog.html';
+							}
+						},
+						error: function(res){
+							alert(res.message);
+						}
+					})
+				},
+				manageBlog: function(){
+					var that = this;
+					this.isShow = true;
+					$.ajax({
+						url: 'http://blog.com/api/blog/myBlog',
+						type: 'post',
+						data: {
+							uese_id: localStorage.getItem("user_id"),
+						},
+						dataType: 'json',
+						success: function(res) {
+							if(res.error_code == 0){
+								that.blogList = res.data.my_blog_lists;
+							}
+						},
+						error: function(res){
+							alert(res.message);
+						}
+					})
+				},
+				manageBlog: function(){
+					this.isShow = false;
+					var that = this;
+					$.ajax({
+						url: 'http://blog.com/api/blog/myBlog',
+						type: 'post',
+						data: {
+							user_id: localStorage.getItem("user_id"),
+						},
+						dataType: 'json',
+						success: function(res){
+							if(res.error_code == 0){
+								// alert("发布成功，即将展示页面内容");
+								that.blog_list = res.data.my_blog_lists;
+							}
+						},
+						error: function(res){
+							alert(res.message);
+						}
+					})
+				},
+				add: function() {
+					var that = this;
+					var args= this.getQueryStringArge();
+					var id = args["id"];
+					$.ajax({
+						url: 'http://blog.com/api/blog/add',
+						type: 'get',
+						data: {
+							user_id: localStorage.getItem("user_id"),
+							blog_id: id,
+						},
+						dataType: 'json',
+						success: function(res) {
+							if(res.error_code == 0){
+								that.list = res.data.classify_lists;
+								that.blog_title = res.data.my_blog_info.title;
+							}
+						},
+						error: function(res) {
+							alert(res.message);
+						}
+					})
+				}
+			}
+		})
+	</script>
+</body>
+</html>

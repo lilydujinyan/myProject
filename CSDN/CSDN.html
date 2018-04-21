@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="css/swiper-3.4.2.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script type="text/javascript" src="js/jquery-3.2.0.min.js"></script>
+ 	<script type="text/javascript" src="js/vue.js"></script>
+	<title></title>
+</head>
+<body>
+	<div id="content">
+		<div class="header clearfix">
+			<div class="headL clearfix">
+				<div class="toolbarBack"></div>
+				<div class="logo">CSDN</div>
+			</div>
+			<div class="headR">
+				<div class="login clearfix">
+					<a href="login.html" class="alogin" :class="showHide ? 'hide' : 'show'">登录</a>
+					<a href="personal.html" class="Nlogin" :class="showHide ? 'show' : 'hide'">已登录</a>
+				</div>
+			</div>
+		</div>
+		<div id="nav">
+			<div class="nav-list">
+				<div class="warp clarfix">
+					<a href="###" class="nav-btn" v-for="item in resData.data.classify_lists">
+						{{ item.classify_name }}
+					</a>
+				</div>
+			</div>
+		</div>
+		<div class="carousel" v-if="resData">
+			<div class="swiper-container">
+				<div class="swiper-wrapper">
+					<div class="swiper-slide" v-for="item in resData.data.banner">
+						<img :src="item.img">
+					</div>
+				</div>
+			</div>
+		</div>
+		<ul v-if="resData" class="feedList">
+			<li v-for="item in resData.data.blog_lists">
+				<a v-bind:href="'details.html?id='+item.id">
+					<h2>
+						{{ item.title }}
+					</h2>
+					<div class="info-tag clearfix">
+						<div class="tag">
+							{{ item.classify_name }}
+						</div>
+						<div class="user-name">
+							{{ item.author_name }}
+						</div>
+						<div class="red-count">
+							{{ item.read_num }}阅读
+						</div>
+						<div class="data">
+							{{ item.date }}
+						</div>
+					</div>
+				</a>
+			</li>
+		</ul>
+	</div>
+	<script type="text/javascript" src="js/swiper-3.4.2.min.js"></script>
+	<script type="text/javascript">
+		var vm = new Vue({
+			el: "#content",
+			data: {
+				resData:{
+					data :{
+						blog_lists:[],
+						banner:[],
+						classify_lists:[]
+					}
+				},
+				showHide: false,
+			},
+			mounted: function(){
+				this.getList();
+				this.swiperBanner();
+				console.log(this.showHide)
+				this.login();
+			},
+			methods: {
+				login: function(){
+					if(window.localStorage.user_id){
+						this.showHide = true;
+					}else {
+						this.showHide = false;
+					}
+				},
+				getList: function(){
+					var that = this;
+					$.ajax({
+						'url':'http://blog.com/api/index/index',
+						'type':'get',
+						'data':{},
+						'dataType':'json',
+						success: function(res){
+							that.resData = res;
+						},
+						error: function(res){
+							alert("shibai");
+						}	
+					})
+				},
+				swiperBanner: function(){
+					var mySwiper = new Swiper('.swiper-container',{
+						loop: true,
+						direction: 'horizontal',
+						autoplay: 2000,
+						observer:true,
+			   			observeParents:true,
+					})
+				}
+			}
+		})
+	</script>
+</body>
+</html>

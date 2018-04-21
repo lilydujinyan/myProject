@@ -1,0 +1,164 @@
+html,body,ul,h2,h1,p {
+	margin: 0;
+	padding: 0;
+}
+html,body {
+	/*background-color: #eee;*/
+	font-size: 48px;
+}
+body {
+	padding-top: 52px;
+    width: 100%;
+    overflow-x: hidden;
+}
+a {
+	text-decoration: none;
+}
+ul {
+	list-style: none;
+}
+.clearfix::after {
+	display: block;
+	content: "";
+	clear: both;
+	height: 0;
+}
+#content {
+	width: 100%;
+	height: 100%;
+}
+.header {
+	-webkit-box-sizing: border-box;
+	position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99;
+	width: 100%;
+	/*height: 52px;*/
+	padding: 14px 16px;
+	line-height: 18px;
+	color: #333;
+	font-size: 12px;
+	background-color: #fff;
+    font-family: 'PingFang SC','Microsoft YaHei',SimHei,Arial,SimSun;
+}
+.headL {
+    width: 67%;
+    height: 24px;
+	float: left;
+	overflow: hidden;
+}
+.headR {
+	margin-left: auto;
+	float: right;
+}
+.toolbarBack {
+	width: 50px;
+	height: 22px;
+	border: 1px solid #000;
+	float: left;
+}
+.logo {
+	text-align: right;
+	width: 130px;
+	float: right;
+}
+.login a {
+	float: left;
+	font-size: 14px;
+    color: #C92027;
+}
+/*.Nlogin {
+	display: none;
+}*/
+#nav {
+	position: relative;
+    width: 100%;
+    height: .8rem;
+    line-height: .8rem;
+    background: #ebebeb;
+    overflow: hidden;
+}
+.nav-list {
+	padding-left: .32rem;
+    width: 100%;
+    height: 0.8rem;
+    overflow-x: auto;
+}
+.warp {
+	width: 300%;
+	flex-wrap: nowrap;
+    height: 100%;
+    line-height: .3rem;
+}
+.nav-btn.active {
+	color: #c92027;
+}
+.nav-btn {
+	float: left;
+	display: inline-block;
+    margin-right: .4rem;
+    height: 100%;
+    line-height: .8rem;
+    font-size: .3rem;
+    color: #4f4f4f;
+}
+.carousel {
+	width: 100%;
+	height: 145px;
+	overflow: hidden;
+	background-color: #eee;
+}
+.carousel img {
+	width: 100%;
+	height: 145px;
+}
+.feedList {
+	border-top: 1px solid #d8d8d8;
+}
+.feedList li {
+	position: relative;
+    padding: .24rem .32rem .08rem;
+    border-bottom: 1px solid #d8d8d8;
+}
+.feedList li h2 {
+	font-size: .34rem;
+    line-height: .48rem;
+    max-height: .96rem;
+    font-weight: bold;
+    overflow: hidden;
+}
+.info-tag {
+	margin-right: -.24rem;
+    font-size: .24rem;
+}
+.info-tag div {
+	margin-right: 0.2rem;
+	float: left;
+	line-height: .68rem;
+}
+.tag {
+	color: #349edf;
+}
+.user-name {
+	max-width: 1.6rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.data {
+	color: #999;
+}
+.feedList li a {
+	display: block;
+}
+.show {
+	display: block;
+}
+.hide {
+	display: none;
+}
+.special {
+	background-color: #C92027;
+    border-color: #C92027;
+}
